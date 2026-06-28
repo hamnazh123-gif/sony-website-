@@ -136,17 +136,50 @@
     /* Specs Responsive Settings */
     @media (max-width: 768px) {
       .specs-main {
-        padding: calc(var(--nav-height) + 40px) 24px 80px 24px;
+        padding: calc(var(--nav-height) + 40px) 20px 80px 20px;
       }
       .specs-header {
         margin-bottom: 40px;
       }
       .specs-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
       }
       .specs-card {
-        padding: 30px 24px;
+        padding: 24px 18px;
+      }
+      .specs-label {
+        width: 44%;
+        font-size: 0.82rem;
+      }
+      .specs-value {
+        font-size: 0.82rem;
+      }
+      .specs-bottom-cta .cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .specs-bottom-cta .btn-primary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .specs-table td {
+        padding: 12px 0;
+        display: block;
+        width: 100%;
+      }
+      .specs-label {
+        width: 100%;
+        padding-right: 0;
+        padding-bottom: 4px;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+      .specs-value {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -179,7 +212,20 @@
       <li><a href="./order.html">Buy</a></li>
     </ul>
     <a href="./order.html" class="nav-cta">Experience WH-1000XM6</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+    <a href="./index.html">Overview</a>
+    <a href="./technology.html">Technology</a>
+    <a href="#" class="active">Specs</a>
+    <a href="./about.html">About Us</a>
+    <a href="./order.html">Buy</a>
+    <a href="./order.html" class="mobile-nav-cta">Experience WH-1000XM6</a>
+  </nav>
 
   <!-- Main Specifications Grid -->
   <main class="specs-main">
@@ -340,6 +386,22 @@
           preloader.style.display = 'none';
         }, 300);
       }, 300);
+    });
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      drawer.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
     });
   </script>
 </body>

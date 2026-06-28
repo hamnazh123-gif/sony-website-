@@ -588,36 +588,233 @@ html.lenis {
   margin-top: 24px;
 }
 
-/* Responsive adjustments */
+/* ─── Hamburger Mobile Menu ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  z-index: 110;
+}
+.nav-hamburger:hover {
+  background: rgba(255,255,255,0.07);
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Drawer */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  width: 100%;
+  background: rgba(5,5,5,0.97);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 99;
+  flex-direction: column;
+  padding: 24px 28px 32px;
+  gap: 6px;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.mobile-nav-drawer.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.mobile-nav-drawer a {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+.mobile-nav-drawer a:last-child {
+  border-bottom: none;
+}
+.mobile-nav-drawer a:hover,
+.mobile-nav-drawer a.active {
+  color: var(--text-primary);
+}
+.mobile-nav-drawer .mobile-nav-cta {
+  margin-top: 16px;
+  display: inline-block;
+  text-align: center;
+  background: var(--gradient-accent);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: none;
+  box-shadow: 0 4px 15px rgba(0,80,255,0.25);
+}
+
+/* ─── Responsive Breakpoints ─── */
+
+/* Tablet */
 @media (max-width: 1024px) {
   .panel.left, .panel.right {
     max-width: 50%;
     padding: 0 6%;
   }
+  .footer-nav {
+    gap: 40px;
+  }
 }
 
+/* Mobile (≤ 768px) */
 @media (max-width: 768px) {
+  :root {
+    --nav-height: 56px;
+  }
+
+  /* Nav */
   .header-nav {
     padding: 0 20px;
   }
   .nav-links {
-    display: none; /* In production apps, a mobile menu would trigger. For clean aesthetic, hide on mobile */
+    display: none;
   }
+  .nav-cta {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+  .mobile-nav-drawer {
+    display: flex;
+  }
+
+  /* Panels go full width and centre on mobile */
   .panel {
     padding: 0 24px !important;
     text-align: center !important;
     align-items: center !important;
     max-width: 100% !important;
   }
+  .panel.right .tech-details {
+    align-items: center !important;
+  }
+  .panel.right .tech-details li {
+    flex-direction: row !important;
+    text-align: left !important;
+  }
+
+  /* Typography */
   .headline {
-    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-size: clamp(1.9rem, 8vw, 3rem) !important;
   }
   .subheadline {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .body-text {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+  .pre-headline {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* Buttons */
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
   }
   .btn-primary {
     padding: 14px 28px;
     font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
+  }
+  .btn-secondary {
+    font-size: 0.85rem;
+  }
+
+  /* Lock Card */
+  .lock-card {
+    padding: 22px 20px;
+    margin: 16px 12px 0;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    bottom: 4%;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 50px 24px 36px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 36px;
+    margin-bottom: 40px;
+  }
+  .footer-nav {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* Small phone (≤ 480px) */
+@media (max-width: 480px) {
+  .header-nav {
+    padding: 0 16px;
+  }
+  .lock-card {
+    padding: 18px 16px;
+    margin: 12px 0 0;
+  }
+  .headline {
+    font-size: clamp(1.7rem, 9vw, 2.5rem) !important;
+  }
+  .subheadline {
+    font-size: 0.95rem;
   }
 }
 

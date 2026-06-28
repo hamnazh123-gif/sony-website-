@@ -19,7 +19,7 @@
     /* Left Side: Product Viewer */
     .product-viewer {
       flex: 1.2;
-      min-width: 450px;
+      min-width: 300px;
       height: calc(100vh - var(--nav-height));
       position: sticky;
       top: var(--nav-height);
@@ -89,7 +89,7 @@
     /* Right Side: Configurator Panel */
     .configurator-panel {
       flex: 1;
-      min-width: 450px;
+      min-width: 300px;
       padding: 60px 8% 120px 40px;
       height: calc(100vh - var(--nav-height));
       overflow-y: auto;
@@ -414,6 +414,63 @@
         padding: 60px 40px 100px 40px;
       }
     }
+    @media (max-width: 768px) {
+      .order-main {
+        flex-direction: column;
+      }
+      .product-viewer {
+        min-width: 0;
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        padding: 40px 24px;
+      }
+      .viewer-image-container {
+        max-width: 280px;
+      }
+      .product-badge-group {
+        margin-top: 24px;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      .configurator-panel {
+        min-width: 0;
+        width: 100%;
+        height: auto;
+        padding: 40px 24px 80px 24px;
+      }
+      .form-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .form-row .form-group {
+        max-width: 100% !important;
+      }
+      .option-card {
+        padding: 16px;
+      }
+    }
+    @media (max-width: 480px) {
+      .product-viewer {
+        padding: 32px 16px;
+      }
+      .viewer-image-container {
+        max-width: 220px;
+      }
+      .configurator-panel {
+        padding: 32px 16px 80px 16px;
+      }
+      .config-title {
+        font-size: 1.3rem;
+      }
+      .invoice-card {
+        padding: 20px 16px;
+      }
+    }
   </style>
 </head>
 <body class="order-body">
@@ -444,7 +501,20 @@
       <li><a href="#configurator" class="active" onclick="scrollToConfigSection('config-finish')">Buy</a></li>
     </ul>
     <a href="#checkout" class="nav-cta" onclick="scrollToConfigSection('config-checkout')">Secure Checkout</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+    <a href="./index.html">Overview</a>
+    <a href="./technology.html">Technology</a>
+    <a href="./specs.html">Specs</a>
+    <a href="./about.html">About Us</a>
+    <a href="#" class="active">Buy</a>
+    <a href="#checkout" class="mobile-nav-cta" onclick="scrollToConfigSection('config-checkout')">Secure Checkout</a>
+  </nav>
 
   <!-- Main Grid Container -->
   <main class="order-main">
@@ -731,6 +801,22 @@
         successOverlay.classList.add('active');
       }, 2000);
     }
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      drawer.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
   </script>
 </body>
 </html>

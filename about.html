@@ -35,7 +35,20 @@
       <li><a href="./order.html">Buy</a></li>
     </ul>
     <a href="#reviews" class="nav-cta" onclick="scrollToSection(0.52); return false;">See Reviews</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+    <a href="./index.html">Overview</a>
+    <a href="./technology.html">Technology</a>
+    <a href="./specs.html">Specs</a>
+    <a href="#" class="active">About Us</a>
+    <a href="./order.html">Buy</a>
+    <a href="#reviews" class="mobile-nav-cta" onclick="scrollToSection(0.52); return false;">See Reviews</a>
+  </nav>
 
   <!-- Scrolling Canvas Structure (500vh about page) -->
   <main class="scrolly-container side-page" id="scroll-container">
@@ -134,6 +147,24 @@
         });
       }
     }
+  </script>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('nav-hamburger');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      drawer.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
   </script>
 </body>
 </html>
