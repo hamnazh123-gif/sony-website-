@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sony WH-1000XM6 Specifications | Technical Sheet</title>
+  <meta name="description" content="Technical specifications sheet for the Sony WH-1000XM6 wireless headphones. Detailed driver dimensions, battery capacities, Bluetooth profile codecs, and ANC diagnostics.">
+  <style>
+    /* Specific styles for the specs sheets page */
+    .specs-main {
+      padding: calc(var(--nav-height) + 60px) 8% 120px 8%;
+      background: #2A2A2A;
+      min-height: 100vh;
+    }
+
+    .specs-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 80px auto;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Specs Glass Card styling — full glassmorphism */
+    .specs-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle top-left shine for depth */
+    .specs-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 60%; height: 1px;
+      background: linear-gradient(to right, rgba(255,255,255,0.18), transparent);
+    }
+
+    .specs-card:hover {
+      border-color: rgba(0, 214, 255, 0.25);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 214, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .specs-card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .specs-card-title::after {
+      content: '';
+      width: 24px;
+      height: 1.5px;
+      background: var(--gradient-accent);
+    }
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .specs-table tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .specs-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .specs-table td {
+      padding: 16px 0;
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+
+    .specs-label {
+      color: var(--text-muted);
+      font-weight: 500;
+      width: 40%;
+      padding-right: 12px;
+    }
+
+    .specs-value {
+      color: var(--text-secondary);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .highlight-value {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Highlight badge for particular technical numbers */
+    .tech-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(0, 214, 255, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 214, 255, 0.2);
+      margin-top: 4px;
+    }
+
+    .specs-bottom-cta {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    /* Specs Responsive Settings */
+    @media (max-width: 768px) {
+      .specs-main {
+        padding: calc(var(--nav-height) + 40px) 24px 80px 24px;
+      }
+      .specs-header {
+        margin-bottom: 40px;
+      }
+      .specs-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .specs-card {
+        padding: 30px 24px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" crossorigin href="/assets/style-BqmZg95c.css">
+</head>
+<body class="specs-body">
+
+  <!-- Loading Animation (Instant fade out) -->
+  <div class="preloader" id="preloader" style="transition: opacity 0.3s;">
+    <div class="loader-container">
+      <div class="loader-logo">SONY</div>
+      <div class="loader-ring">
+        <svg viewBox="0 0 80 80">
+          <circle class="bg" cx="40" cy="40" r="36" />
+          <circle class="progress" id="loader-progress-circle" cx="40" cy="40" r="36" style="stroke-dashoffset: 0;" />
+        </svg>
+      </div>
+      <div class="loader-progress-text">100%</div>
+      <div class="loader-status">SPEC SHEETS ACTIVE</div>
+    </div>
+  </div>
+
+  <!-- Apple-Style Ultra-Minimal Nav Bar -->
+  <header class="header-nav scrolled" id="header-nav">
+    <a href="./index.html" class="nav-brand">WH-1000XM6</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Overview</a></li>
+      <li><a href="./technology.html">Technology</a></li>
+      <li><a href="#" class="active">Specs</a></li>
+      <li><a href="./about.html">About Us</a></li>
+      <li><a href="./order.html">Buy</a></li>
+    </ul>
+    <a href="./order.html" class="nav-cta">Experience WH-1000XM6</a>
+  </header>
+
+  <!-- Main Specifications Grid -->
+  <main class="specs-main">
+    
+    <div class="specs-header">
+      <span class="pre-headline">TECHNICAL PARAMETERS</span>
+      <h1 class="headline" style="font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 16px;">Full Specifications.</h1>
+      <p class="subheadline" style="margin: 0 auto;">Review the structural dimensions, processor speeds, noise attenuation metrics, and power details that define the WH‑1000XM6.</p>
+    </div>
+
+    <div class="specs-grid">
+      
+      <!-- Card 1: Acoustics -->
+      <section class="specs-card">
+        <h2 class="specs-card-title">Acoustic Driver</h2>
+        <table class="specs-table">
+          <tr>
+            <td class="specs-label">Driver Unit</td>
+            <td class="specs-value"><span class="highlight-value">40 mm dome type</span> (CCAW Voice Coil, Bio-Cellulose composite diaphragm)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Frequency Response</td>
+            <td class="specs-value">4 Hz - 45,000 Hz (Passive)<br>20 Hz - 40,000 Hz (Active, LDAC 990 kbps)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Impedance</td>
+            <td class="specs-value">48 Ω (Passive wired connection)<br>16 Ω (Active unit powered)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Sensitivities</td>
+            <td class="specs-value">102 dB / mW (Passive wired)<br>108 dB / mW (Active powered)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Hi-Res Audio</td>
+            <td class="specs-value">Hi-Res Audio (Wired) & Hi-Res Audio Wireless <span class="tech-pill">LDAC SUPPORT</span></td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Card 2: Processor & ANC -->
+      <section class="specs-card">
+        <h2 class="specs-card-title">Processor & Noise Control</h2>
+        <table class="specs-table">
+          <tr>
+            <td class="specs-label">Audio Processors</td>
+            <td class="specs-value"><span class="highlight-value">Sony QN6 HD Processor</span> + Integrated Processor V3</td>
+          </tr>
+          <tr>
+            <td class="specs-label">ANC Calibration</td>
+            <td class="specs-value">Real-time Cognitive ANC analyzer adapting up to <span class="highlight-value">800 times/second</span> to environmental noise</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Microphone Array</td>
+            <td class="specs-value"><span class="highlight-value">8 Beamforming Microphones</span> (4 per ear cup) with AI voice isolation & wind noise protection</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Atmospheric Pressure Optimizer</td>
+            <td class="specs-value">Automatic altitude barometric recalibration for constant air cabin isolation</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Ambient Audio</td>
+            <td class="specs-value">Smart Ambient Sound control (20 focus levels) with Quick Attention quick-mute</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Card 3: Connectivity -->
+      <section class="specs-card">
+        <h2 class="specs-card-title">Connectivity & Usability</h2>
+        <table class="specs-table">
+          <tr>
+            <td class="specs-label">Bluetooth version</td>
+            <td class="specs-value"><span class="highlight-value">Bluetooth® v5.4</span> (Class 1 Power)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Profiles & Codecs</td>
+            <td class="specs-value">Codecs: LDAC, AAC, SBC, LC3 (LE Audio Ready)<br>Profiles: A2DP, AVRCP, HFP, HSP</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Multi-Point Pairing</td>
+            <td class="specs-value">Seamless active connection up to <span class="highlight-value">3 devices</span> simultaneously</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Upscaling</td>
+            <td class="specs-value">DSEE Extreme™ Edge-AI upscaling (restores compressed high-end acoustic layers)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Pairing systems</td>
+            <td class="specs-value">Google Fast Pair & Windows Swift Pair protocols</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Card 4: Battery & Charging -->
+      <section class="specs-card">
+        <h2 class="specs-card-title">Power & Battery</h2>
+        <table class="specs-table">
+          <tr>
+            <td class="specs-label">Playback Endurance</td>
+            <td class="specs-value">Active ANC: <span class="highlight-value">Up to 60 Hours</span><br>ANC Disabled: <span class="highlight-value">Up to 75 Hours</span></td>
+          </tr>
+          <tr>
+            <td class="specs-label">Fast Charge Technology</td>
+            <td class="specs-value"><span class="highlight-value">5 mins charge = 5 hours playback</span> via high-amp USB Power Delivery (PD) charger</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Full Charge Time</td>
+            <td class="specs-value">Approx. 2.5 hours from 0% to 100% capacity</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Wired Playback</td>
+            <td class="specs-value">Passive wired audio cable supports playback even with battery fully drained</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Card 5: Structure & Comfort -->
+      <section class="specs-card" style="grid-column: 1 / -1;">
+        <h2 class="specs-card-title">Industrial Design & Weight</h2>
+        <table class="specs-table">
+          <tr>
+            <td class="specs-label">Weight</td>
+            <td class="specs-value"><span class="highlight-value">242 grams</span> (10g lighter than predecessor)</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Materials</td>
+            <td class="specs-value">Carbon-fiber reinforced recycled poly-carbonates, eco-friendly vegan leather, memory foam core cushions, ocean plastics packaging</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Input / Connectors</td>
+            <td class="specs-value">USB Type-C® port (for charging/audio), 3.5mm gold-plated stereo auxiliary headphone jack</td>
+          </tr>
+          <tr>
+            <td class="specs-label">Touch controls</td>
+            <td class="specs-value">Capacitive side panel (volume swipe, track skips, play/pause, voice assistant trigger)</td>
+          </tr>
+        </table>
+      </section>
+
+    </div>
+
+    <div class="specs-bottom-cta">
+      <div class="cta-group" style="justify-content: center;">
+        <a href="./order.html" class="btn-primary">Pre-Order WH-1000XM6</a>
+        <a href="./index.html" class="btn-secondary">Back to Overview</a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Fade out preloader instantly on page ready
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 300);
+      }, 300);
+    });
+  </script>
+</body>
+</html>

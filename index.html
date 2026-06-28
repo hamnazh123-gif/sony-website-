@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sony WH-1000XM6 | Silence, perfected. Flagship Headphones</title>
+  <meta name="description" content="Experience the future of sound with the Sony WH-1000XM6. Photorealistic scrollytelling showcases adaptive noise cancelling, precision drivers, and premium comfort.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="overview-body">
+
+  <!-- Premium Cinematic Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="loader-container">
+      <div class="loader-logo">SONY</div>
+      <div class="loader-ring">
+        <svg viewBox="0 0 80 80">
+          <circle class="bg" cx="40" cy="40" r="36" />
+          <circle class="progress" id="loader-progress-circle" cx="40" cy="40" r="36" />
+        </svg>
+      </div>
+      <div class="loader-progress-text" id="loader-progress-text">00%</div>
+      <div class="loader-status" id="loader-status">INITIALIZING COGNITIVE ACOUSTICS</div>
+    </div>
+  </div>
+
+  <!-- Apple-Style Ultra-Minimal Nav Bar -->
+  <header class="header-nav" id="header-nav">
+    <a href="#" class="nav-brand">SONY</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Overview</a></li>
+      <li><a href="./technology.html">Technology</a></li>
+      <li><a href="#noise-cancelling" onclick="scrollToSection(0.5)">Noise Cancelling</a></li>
+      <li><a href="./specs.html">Specs</a></li>
+      <li><a href="./about.html">About Us</a></li>
+      <li><a href="./order.html">Buy</a></li>
+    </ul>
+    <a href="./order.html" class="nav-cta">Experience WH-1000XM6</a>
+  </header>
+
+  <!-- Scrolling Canvas Structure -->
+  <main class="scrolly-container" id="scroll-container">
+    <div class="canvas-wrapper">
+      <canvas id="hero-canvas" class="scrolly-canvas"></canvas>
+      <div class="glow-overlay"></div>
+      <div class="grid-bg"></div>
+    </div>
+
+    <!-- Content Panels -->
+    <div class="content-wrapper">
+      
+      <!-- Panel 0: Hero (0% - 15%) -->
+      <section class="panel center active" id="panel-0">
+        <span class="pre-headline">THE COGNITIVE ERA OF AUDIO</span>
+        <h1 class="headline">Sony WH-1000XM6</h1>
+        <p class="subheadline">Hear only what matters. Flagship wireless noise cancelling, re‑engineered for a world that never stops.</p>
+        <div class="scroll-indicator" onclick="scrollToSection(0.18)">
+          <span>SCROLL TO UNRAVEL</span>
+          <div class="mouse-icon"></div>
+        </div>
+      </section>
+
+      <!-- Panel 1: Precision Engineering (15% - 40%) -->
+      <section class="panel left" id="panel-1">
+        <span class="pre-headline">PRECISION ACOUSTICS</span>
+        <h2 class="headline">Precision-engineered<br>for silence.</h2>
+        <p class="body-text">An ultra-lightweight frame houses massive audio innovation. Designed to suspend in perfect comfort while forming a flawless acoustic seal.</p>
+        <ul class="tech-details">
+          <li>Custom 40mm bio-cellulose drivers</li>
+          <li>Sealed resonance-free acoustic chambers</li>
+          <li>Pressure-relieving thermo-foamed cushions</li>
+        </ul>
+      </section>
+
+      <!-- Panel 2: Adaptive Noise Cancelling (40% - 65%) -->
+      <section class="panel right" id="panel-2">
+        <span class="pre-headline">ACTIVE CANCELLATION</span>
+        <h2 class="headline">Adaptive noise<br>cancelling, redefined.</h2>
+        <p class="body-text">Our proprietary dual HD Noise Cancelling Processor QN6 analyzes environmental frequencies 800 times per second, dynamically isolating your space.</p>
+        <ul class="tech-details" style="align-items: flex-end;">
+          <li>Multi-microphone array listens in every direction</li>
+          <li>Real-time AI noise analysis adapts instantly</li>
+          <li>Planes, trains, and crowds seamlessly fade away</li>
+        </ul>
+      </section>
+
+      <!-- Panel 3: Immersive Sound (65% - 85%) -->
+      <section class="panel left" id="panel-3">
+        <span class="pre-headline">HI-RES ACOUSTICS</span>
+        <h2 class="headline">Immersive,<br>lifelike sound.</h2>
+        <p class="body-text">Restore the detail lost in compression. Edge-AI upscaling algorithms reconstruct instrumentation and vocals in real time for unmatched presence.</p>
+        <ul class="tech-details">
+          <li>High-performance CCAW voice coils</li>
+          <li>AI-enhanced DSEE Extreme™ upscaling</li>
+          <li>Ultra-wide spatial audio soundstage</li>
+        </ul>
+      </section>
+
+      <!-- Panel 4: Reassembly & Buy Lock (85% - 100%) -->
+      <section class="panel center" id="panel-4">
+        <span class="pre-headline">SONY FLAGSHIP</span>
+        <h2 class="headline" style="margin-bottom: 12px;">Hear everything.<br>Feel nothing else.</h2>
+        <p class="subheadline" style="margin-bottom: 20px; font-size: 1.3rem;">WH-1000XM6. Designed for focus, crafted for comfort.</p>
+        
+        <div class="lock-card">
+          <div class="cta-group" style="justify-content: center;">
+            <a href="./order.html" class="btn-primary">Experience WH-1000XM6</a>
+            <a href="./specs.html" class="btn-secondary">See full specs</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <!-- Scrollytelling script -->
+  <script type="module" src="./app.js"></script>
+
+  <script>
+    // Smooth scroll helper using Lenis
+    function scrollToSection(percent) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const targetScroll = scrollHeight * percent;
+      
+      if (window.lenisInstance) {
+        window.lenisInstance.scrollTo(targetScroll, {
+          duration: 1.8,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Out-expo
+        });
+      } else {
+        window.scrollTo({
+          top: targetScroll,
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">SONY</span>
+          <p class="footer-tagline">Engineering silence since 1946.</p>
+        </div>
+        <nav class="footer-nav">
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Product</span>
+            <a href="./index.html">Overview</a>
+            <a href="./technology.html">Technology</a>
+            <a href="./specs.html">Specifications</a>
+            <a href="./about.html">About Us</a>
+          </div>
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Purchase</span>
+            <a href="./order.html">Configure &amp; Buy</a>
+            <a href="./order.html">Flagship Edition</a>
+            <a href="./specs.html">Compare Models</a>
+          </div>
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Support</span>
+            <a href="#">Warranty</a>
+            <a href="#">Manuals</a>
+            <a href="#">Contact Us</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">&copy; 2025 Sony Group Corporation. All Rights Reserved.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter/X">𝕏</a>
+          <a href="#" aria-label="Instagram">Ig</a>
+          <a href="#" aria-label="YouTube">Yt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

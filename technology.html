@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sony WH-1000XM6 Technology | Engineering the Future of Sound</title>
+  <meta name="description" content="Explore the technical engineering behind the Sony WH-1000XM6, featuring carbon fiber headbands, touch interfaces, and 60-hour battery capacity.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="technology-body">
+
+  <!-- Premium Cinematic Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="loader-container">
+      <div class="loader-logo">SONY</div>
+      <div class="loader-ring">
+        <svg viewBox="0 0 80 80">
+          <circle class="bg" cx="40" cy="40" r="36" />
+          <circle class="progress" id="loader-progress-circle" cx="40" cy="40" r="36" />
+        </svg>
+      </div>
+      <div class="loader-progress-text" id="loader-progress-text">00%</div>
+      <div class="loader-status" id="loader-status">LOAD-TESTING BATTERY CELLS</div>
+    </div>
+  </div>
+
+  <!-- Apple-Style Ultra-Minimal Nav Bar -->
+  <header class="header-nav" id="header-nav">
+    <a href="./index.html" class="nav-brand">WH-1000XM6</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Overview</a></li>
+      <li><a href="#" class="active">Technology</a></li>
+      <li><a href="./specs.html">Specs</a></li>
+      <li><a href="./about.html">About Us</a></li>
+      <li><a href="./order.html">Buy</a></li>
+    </ul>
+    <a href="./order.html" class="nav-cta">Experience WH-1000XM6</a>
+  </header>
+
+  <!-- Scrolling Canvas Structure (500vh side scroll page) -->
+  <main class="scrolly-container side-page" id="scroll-container">
+    <div class="canvas-wrapper">
+      <canvas id="side-canvas" class="scrolly-canvas"></canvas>
+      <div class="glow-overlay" style="background: radial-gradient(circle at 50% 50%, rgba(0, 214, 255, 0.05) 0%, transparent 70%);"></div>
+      <div class="grid-bg"></div>
+    </div>
+
+    <!-- Content Panels -->
+    <div class="content-wrapper">
+      
+      <!-- Panel 0: Side Hero (0% - 20%) -->
+      <section class="panel center active" id="panel-0">
+        <span class="pre-headline">THE PERSPECTIVE OF DESIGN</span>
+        <h1 class="headline">Engineering the<br>Future of Sound.</h1>
+        <p class="subheadline">A masterclass in industrial design, aerodynamics, and structural materials. Designed to be heard, not felt.</p>
+        <div class="scroll-indicator" onclick="scrollToSection(0.24)">
+          <span>SCROLL TO ROTATE</span>
+          <div class="mouse-icon"></div>
+        </div>
+      </section>
+
+      <!-- Panel 1: Touch Control (20% - 50%) -->
+      <section class="panel left" id="panel-1">
+        <span class="pre-headline">CAPACITIVE INTERFACE</span>
+        <h2 class="headline">Intelligent Touch.<br>Seamless Control.</h2>
+        <p class="body-text">The entire profile of the ear cup is a capacitive touch sensor. Control music playback, adjust volume, or activate quick-attention mode with simple taps and slides.</p>
+        <ul class="tech-details">
+          <li>Swipe up/down for volume control</li>
+          <li>Tap to play/pause or answer calls</li>
+          <li>Cover ear cup to instantly pass ambient audio</li>
+        </ul>
+      </section>
+
+      <!-- Panel 2: Battery & Comfort (50% - 80%) -->
+      <section class="panel right" id="panel-2">
+        <span class="pre-headline">ENDURANCE STRUCTURE</span>
+        <h2 class="headline">Designed for<br>Endless Comfort.</h2>
+        <p class="body-text">Featuring carbon-fiber reinforced hinges that absorb structural stress. High-density lithium cells deliver a staggering 60 hours of play time per charge.</p>
+        <ul class="tech-details" style="align-items: flex-end;">
+          <li>Up to 60 hours of battery life with ANC on</li>
+          <li>Quick charge: 5 minutes gives 5 hours</li>
+          <li>Carbon-fiber reinforced headband assembly</li>
+        </ul>
+      </section>
+
+      <!-- Panel 3: Closing / Reassembled (80% - 100%) -->
+      <section class="panel center" id="panel-3">
+        <span class="pre-headline">WH-1000XM6 ARCHITECTURE</span>
+        <h2 class="headline" style="margin-bottom: 12px;">Form meets function.</h2>
+        <p class="subheadline" style="margin-bottom: 20px; font-size: 1.3rem;">Sony's ultimate side-profile engineering, built for lifetimes of sound.</p>
+        
+        <div class="lock-card">
+          <div class="cta-group" style="justify-content: center;">
+            <a href="./index.html" class="btn-primary">View Overview Exploded View</a>
+            <a href="./order.html" class="btn-secondary">Buy WH-1000XM6</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <!-- Scrollytelling script -->
+  <script type="module" src="./technology.js"></script>
+
+  <script>
+    // Smooth scroll helper using Lenis
+    function scrollToSection(percent) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const targetScroll = scrollHeight * percent;
+      
+      if (window.lenisInstance) {
+        window.lenisInstance.scrollTo(targetScroll, {
+          duration: 1.8,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Out-expo
+        });
+      } else {
+        window.scrollTo({
+          top: targetScroll,
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
+</body>
+</html>

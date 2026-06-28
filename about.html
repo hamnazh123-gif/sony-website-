@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Sony Audio | Decades of Acoustic Credibility</title>
+  <meta name="description" content="Explore Sony's 50-year acoustic engineering legacy and global credibility, featuring professional reviews of the flagship WH-1000XM6.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="about-body">
+
+  <!-- Premium Cinematic Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="loader-container">
+      <div class="loader-logo">SONY</div>
+      <div class="loader-ring">
+        <svg viewBox="0 0 80 80">
+          <circle class="bg" cx="40" cy="40" r="36" />
+          <circle class="progress" id="loader-progress-circle" cx="40" cy="40" r="36" />
+        </svg>
+      </div>
+      <div class="loader-progress-text" id="loader-progress-text">00%</div>
+      <div class="loader-status" id="loader-status">LOADING SONY CHRONICLES</div>
+    </div>
+  </div>
+
+  <!-- Apple-Style Ultra-Minimal Nav Bar -->
+  <header class="header-nav" id="header-nav">
+    <a href="./index.html" class="nav-brand">WH-1000XM6</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Overview</a></li>
+      <li><a href="./technology.html">Technology</a></li>
+      <li><a href="./specs.html">Specs</a></li>
+      <li><a href="#" class="active">About Us</a></li>
+      <li><a href="./order.html">Buy</a></li>
+    </ul>
+    <a href="#reviews" class="nav-cta" onclick="scrollToSection(0.52); return false;">See Reviews</a>
+  </header>
+
+  <!-- Scrolling Canvas Structure (500vh about page) -->
+  <main class="scrolly-container side-page" id="scroll-container">
+    <div class="canvas-wrapper">
+      <canvas id="about-canvas" class="scrolly-canvas"></canvas>
+      <div class="glow-overlay" style="background: radial-gradient(circle at 50% 50%, rgba(0, 80, 255, 0.05) 0%, transparent 70%);"></div>
+      <div class="grid-bg"></div>
+    </div>
+
+    <!-- Content Panels -->
+    <div class="content-wrapper">
+      
+      <!-- Panel 0: About Hero (0% - 20%) -->
+      <section class="panel center active" id="panel-0">
+        <span class="pre-headline">THE SOUND LEGACY</span>
+        <h1 class="headline">Legacy of Sound.<br>Engineered for Silence.</h1>
+        <p class="subheadline">Sony's decades-long pursuit of perfect sound and digital noise-cancelling leadership, culminating in the WH-1000XM6.</p>
+        <div class="scroll-indicator" onclick="scrollToSection(0.24)">
+          <span>SCROLL TO UNCOVER HISTORY</span>
+          <div class="mouse-icon"></div>
+        </div>
+      </section>
+
+      <!-- Panel 1: Sony Credibility Card (20% - 50%) -->
+      <section class="panel left" id="panel-1">
+        <div class="about-card">
+          <span class="pre-headline">CREDIBILITY & PATENTS</span>
+          <h2 class="headline" style="font-size: 1.8rem; line-height: 1.2; margin-bottom: 12px;">Decades of Audio Leadership.</h2>
+          <p class="body-text" style="font-size: 0.88rem; line-height: 1.5; margin-bottom: 20px;">From pioneering the first portable Walkman to introducing HD digital noise cancellation, Sony's standard of audio credibility is unmatched.</p>
+          <ul class="tech-details" style="gap: 8px;">
+            <li style="font-size: 0.8rem;">Over 50 years of active acoustic research</li>
+            <li style="font-size: 0.8rem;">2,000+ patents in adaptive audio processing</li>
+            <li style="font-size: 0.8rem;">Creators of High-Resolution Wireless standard LDAC</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Panel 2: Reviews Panel (50% - 80%) -->
+      <section class="panel right" id="panel-2">
+        <div class="reviews-container">
+          <span class="pre-headline" style="align-self: flex-end;">VERIFIED CRITICS</span>
+          <h2 class="headline" style="font-size: 1.8rem; line-height: 1.2; margin-bottom: 16px;">Global Acclaim.</h2>
+          
+          <!-- Review Card 1 -->
+          <div class="review-card">
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"The WH-1000XM6 redefines the noise-cancelling baseline. The cognitive silencing is magical."</p>
+            <div class="review-author">Sound & Vision Editorial</div>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div class="review-card">
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"Sony has achieved the impossible: making silence sound incredibly warm, rich, and detailed."</p>
+            <div class="review-author">Audiophile Journal</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 3: Reassembled / CTA (80% - 100%) -->
+      <section class="panel center" id="panel-3">
+        <div class="about-card" style="text-align: center; max-width: 550px;">
+          <span class="pre-headline">SONY CRAFTSMANSHIP</span>
+          <h2 class="headline" style="font-size: 2rem; margin-bottom: 12px;">Crafted for Focus.</h2>
+          <p class="subheadline" style="font-size: 1rem; margin-bottom: 24px;">Experience the next milestone in acoustic science.</p>
+          <div class="cta-group" style="justify-content: center;">
+            <a href="./order.html" class="btn-primary">Pre-Order WH-1000XM6</a>
+            <a href="./index.html" class="btn-secondary">Back to Overview</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <!-- Scrollytelling script -->
+  <script type="module" src="./about.js"></script>
+
+  <script>
+    // Smooth scroll helper using Lenis
+    function scrollToSection(percent) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const targetScroll = scrollHeight * percent;
+      
+      if (window.lenisInstance) {
+        window.lenisInstance.scrollTo(targetScroll, {
+          duration: 1.8,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        window.scrollTo({
+          top: targetScroll,
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
+</body>
+</html>

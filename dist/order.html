@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configure & Order Sony WH-1000XM6 | Sony Store</title>
+  <meta name="description" content="Configure your Sony WH-1000XM6 flagship noise-cancelling headphones. Choose your finish, select premium upgrades, and complete checkout.">
+  <style>
+    /* Specific styles for the Ordering Page */
+    .order-main {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: calc(100vh - var(--nav-height));
+      padding-top: var(--nav-height);
+      background-color: var(--bg-primary);
+    }
+
+    /* Left Side: Product Viewer */
+    .product-viewer {
+      flex: 1.2;
+      min-width: 450px;
+      height: calc(100vh - var(--nav-height));
+      position: sticky;
+      top: var(--nav-height);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 80, 255, 0.08) 0%, rgba(5, 5, 5, 0) 65%);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .viewer-image-container {
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Finishes visual styles applied to the image source */
+    .finish-matte-black {
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+    }
+    
+    .finish-platinum-silver {
+      filter: brightness(1.75) contrast(1.05) grayscale(0.6) drop-shadow(0 15px 35px rgba(255, 255, 255, 0.08));
+    }
+
+    .finish-midnight-blue {
+      filter: hue-rotate(185deg) brightness(0.65) saturate(1.4) contrast(1.1) drop-shadow(0 15px 30px rgba(0, 80, 255, 0.15));
+    }
+
+    .viewer-image-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      transform: scale(1.05);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .viewer-image-container:hover img {
+      transform: scale(1.1);
+    }
+
+    .product-badge-group {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    /* Right Side: Configurator Panel */
+    .configurator-panel {
+      flex: 1;
+      min-width: 450px;
+      padding: 60px 8% 120px 40px;
+      height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+    }
+
+    /* Custom scroll for Configurator - highly visible */
+    .configurator-panel::-webkit-scrollbar {
+      width: 8px;
+    }
+    .configurator-panel::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 4px;
+    }
+    .configurator-panel::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .configurator-panel::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .config-section {
+      margin-bottom: 48px;
+    }
+
+    .config-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+    }
+
+    .config-subtitle {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* Finish Circles */
+    .finish-options {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .finish-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background-clip: content-box;
+      padding: 3px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .finish-btn.active {
+      border-color: var(--accent-cyan);
+    }
+
+    .finish-btn[data-finish="matte-black"] {
+      background-color: #141416;
+    }
+
+    .finish-btn[data-finish="platinum-silver"] {
+      background-color: #CFCFCF;
+    }
+
+    .finish-btn[data-finish="midnight-blue"] {
+      background-color: #1E283D;
+    }
+
+    .finish-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    /* Option Grid Card Selection */
+    .option-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .option-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .option-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .option-card.active {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 214, 255, 0.03);
+    }
+
+    .option-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .option-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .option-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .option-price {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    /* Checkout Glassmorphism Form */
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    .form-group input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(0, 214, 255, 0.12);
+      outline: none;
+    }
+
+    /* Invoice Summary Panel */
+    .invoice-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: 10px;
+    }
+
+    .invoice-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .invoice-row.total {
+      margin-bottom: 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .order-button-container {
+      margin-top: 32px;
+    }
+
+    .btn-submit-order {
+      width: 100%;
+      border: none;
+      background: var(--gradient-accent);
+      background-size: 200% 200%;
+      color: white;
+      padding: 18px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 20px rgba(0, 80, 255, 0.35);
+      transition: transform 0.3s, box-shadow 0.3s, background-position 0.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-submit-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 214, 255, 0.5);
+      background-position: 100% 50%;
+    }
+
+    .btn-submit-order:active {
+      transform: translateY(0);
+    }
+
+    /* Checkout success overlay style */
+    .success-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      padding: 40px;
+    }
+
+    .success-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(0, 214, 255, 0.1);
+      border: 2px solid var(--accent-cyan);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 8px rgba(0, 214, 255, 0.3));
+    }
+
+    .success-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--accent-cyan);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Loading micro-animation inside button */
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 3px solid white;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Form Responsive Settings */
+    @media (max-width: 960px) {
+      .product-viewer {
+        height: auto;
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        padding: 60px 40px;
+      }
+      .configurator-panel {
+        height: auto;
+        padding: 60px 40px 100px 40px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" crossorigin href="/assets/style-BqmZg95c.css">
+</head>
+<body class="order-body">
+
+  <!-- Loading Animation (Instant fade out on order page) -->
+  <div class="preloader" id="preloader" style="transition: opacity 0.3s;">
+    <div class="loader-container">
+      <div class="loader-logo">SONY</div>
+      <div class="loader-ring">
+        <svg viewBox="0 0 80 80">
+          <circle class="bg" cx="40" cy="40" r="36" />
+          <circle class="progress" id="loader-progress-circle" cx="40" cy="40" r="36" style="stroke-dashoffset: 0;" />
+        </svg>
+      </div>
+      <div class="loader-progress-text">100%</div>
+      <div class="loader-status">SECURE PIPELINE READY</div>
+    </div>
+  </div>
+
+  <!-- Apple-Style Ultra-Minimal Nav Bar -->
+  <header class="header-nav scrolled" id="header-nav">
+    <a href="./index.html" class="nav-brand">WH-1000XM6</a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Overview</a></li>
+      <li><a href="./technology.html">Technology</a></li>
+      <li><a href="./specs.html">Specs</a></li>
+      <li><a href="./about.html">About Us</a></li>
+      <li><a href="#configurator" class="active" onclick="scrollToConfigSection('config-finish')">Buy</a></li>
+    </ul>
+    <a href="#checkout" class="nav-cta" onclick="scrollToConfigSection('config-checkout')">Secure Checkout</a>
+  </header>
+
+  <!-- Main Grid Container -->
+  <main class="order-main">
+
+    <!-- Left Side: Interactive Preview Viewer -->
+    <div class="product-viewer">
+      <!-- Success panel displays over left viewer on checkout -->
+      <div class="success-overlay" id="success-overlay">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h2 class="headline" style="font-size: 2.2rem; margin-bottom: 12px;">Welcome to silence.</h2>
+        <p class="subheadline" id="success-message" style="font-size: 1rem; margin-bottom: 30px;">Your WH-1000XM6 order is confirmed. Pre-order reference #SNY-6617942.</p>
+        <a href="./index.html" class="btn-primary" style="padding: 12px 28px; font-size: 0.85rem;">Return to Overview</a>
+      </div>
+
+      <!-- Live product image frame -->
+      <div class="viewer-image-container finish-matte-black" id="viewer-container">
+        <img id="product-preview-img" src="./frames/ezgif-frame-001.jpg" alt="Sony WH-1000XM6 Finish Preview">
+      </div>
+
+      <div class="product-badge-group">
+        <span class="badge" id="badge-color">Matte Black</span>
+        <span class="badge" id="badge-weight">242g</span>
+        <span class="badge">QN6 Processor</span>
+      </div>
+    </div>
+
+    <!-- Right Side: Configuration & Form Panel -->
+    <div class="configurator-panel">
+      
+      <!-- Finish Section -->
+      <div class="config-section" id="config-finish">
+        <span class="pre-headline">PERSONALIZATION</span>
+        <h2 class="config-title">Choose your finish.</h2>
+        <div class="finish-options">
+          <button class="finish-btn active" data-finish="matte-black" title="Matte Black"></button>
+          <button class="finish-btn" data-finish="platinum-silver" title="Platinum Silver"></button>
+          <button class="finish-btn" data-finish="midnight-blue" title="Midnight Blue"></button>
+        </div>
+        <div class="finish-label" id="active-finish-label">Matte Black</div>
+      </div>
+
+      <!-- Upgrades Section -->
+      <div class="config-section" id="config-acc">
+        <span class="pre-headline">UPGRADES</span>
+        <h2 class="config-title">Premium Accessories.</h2>
+        
+        <div class="option-cards">
+          <!-- Case Card -->
+          <div class="option-card" id="card-case" onclick="toggleOption('case', 49)">
+            <div class="option-details">
+              <span class="option-name">Executive Leather Case</span>
+              <span class="option-desc">Tanned Nappa leather with built-in battery charging cell (+50h)</span>
+            </div>
+            <span class="option-price">+$49.00</span>
+          </div>
+
+          <!-- Cable Card -->
+          <div class="option-card" id="card-cable" onclick="toggleOption('cable', 79)">
+            <div class="option-details">
+              <span class="option-name">DAC USB-C Silver Core Cable</span>
+              <span class="option-desc">Integrated 32-bit ESS Sabre DAC for lossless audio transmission</span>
+            </div>
+            <span class="option-price">+$79.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Form Section -->
+      <div class="config-section" id="config-checkout">
+        <span class="pre-headline">CHECKOUT</span>
+        <h2 class="config-title">Delivery Details.</h2>
+
+        <form class="checkout-form" id="order-form" onsubmit="handleCheckout(event)">
+          <div class="form-group">
+            <label for="user-email">Email Address</label>
+            <input type="email" id="user-email" required placeholder="name@domain.com">
+          </div>
+
+          <div class="form-group">
+            <label for="user-address">Shipping Address</label>
+            <input type="text" id="user-address" required placeholder="123 Silence Blvd, Acoustic Valley, CA">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="user-card">Credit Card Number</label>
+              <input type="text" id="user-card" required placeholder="4111 0000 0000 0000" maxlength="19">
+            </div>
+            <div class="form-group" style="max-width: 120px;">
+              <label for="user-expiry">Expiry</label>
+              <input type="text" id="user-expiry" required placeholder="MM/YY" maxlength="5">
+            </div>
+          </div>
+
+          <!-- Invoice summary -->
+          <div class="invoice-card">
+            <div class="invoice-row">
+              <span>WH-1000XM6 Headphones</span>
+              <span>$399.00</span>
+            </div>
+            <div class="invoice-row" id="invoice-case-row" style="display: none;">
+              <span>Executive Leather Case Upgrade</span>
+              <span>$49.00</span>
+            </div>
+            <div class="invoice-row" id="invoice-cable-row" style="display: none;">
+              <span>DAC Silver Core Cable Upgrade</span>
+              <span>$79.00</span>
+            </div>
+            <div class="invoice-row">
+              <span>Express Insured Shipping</span>
+              <span style="color: var(--accent-cyan);">FREE</span>
+            </div>
+            <div class="invoice-row total">
+              <span>Total Amount</span>
+              <span id="invoice-total">$399.00</span>
+            </div>
+          </div>
+
+          <div class="order-button-container">
+            <button type="submit" class="btn-submit-order" id="btn-submit">
+              <span class="spinner" id="btn-spinner"></span>
+              <span id="btn-text">Confirm Order</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Fade out preloader instantly on page ready
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 300);
+      }, 300);
+    });
+
+    // Handle smooth scrolls on configurator panel
+    function scrollToConfigSection(elementId) {
+      const el = document.getElementById(elementId);
+      const panel = document.querySelector('.configurator-panel');
+      if (el && panel) {
+        // Handle responsive alignment
+        if (window.innerWidth <= 960) {
+          window.scrollTo({
+            top: el.offsetTop - 52,
+            behavior: 'smooth'
+          });
+        } else {
+          panel.scrollTo({
+            top: el.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+
+    // Toggle Upgrades Options
+    const options = {
+      case: false,
+      cable: false
+    };
+    const basePrice = 399.0;
+    
+    function toggleOption(type, price) {
+      options[type] = !options[type];
+      const card = document.getElementById(`card-${type}`);
+      const invoiceRow = document.getElementById(`invoice-${type}-row`);
+
+      if (options[type]) {
+        card.classList.add('active');
+        invoiceRow.style.display = 'flex';
+      } else {
+        card.classList.remove('active');
+        invoiceRow.style.display = 'none';
+      }
+      
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      let total = basePrice;
+      if (options.case) total += 49.0;
+      if (options.cable) total += 79.0;
+      
+      document.getElementById('invoice-total').textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Handle Finish Options Switch
+    const finishBtns = document.querySelectorAll('.finish-btn');
+    const viewerContainer = document.getElementById('viewer-container');
+    const activeFinishLabel = document.getElementById('active-finish-label');
+    const badgeColor = document.getElementById('badge-color');
+
+    finishBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Clear active
+        finishBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Extract class and text labels
+        const finish = btn.getAttribute('data-finish');
+        let colorText = "";
+        let filterClass = "";
+
+        if (finish === 'matte-black') {
+          colorText = "Matte Black";
+          filterClass = "finish-matte-black";
+        } else if (finish === 'platinum-silver') {
+          colorText = "Platinum Silver";
+          filterClass = "finish-platinum-silver";
+        } else if (finish === 'midnight-blue') {
+          colorText = "Midnight Blue";
+          filterClass = "finish-midnight-blue";
+        }
+
+        // Apply finish transformation
+        activeFinishLabel.textContent = colorText;
+        badgeColor.textContent = colorText;
+        viewerContainer.className = `viewer-image-container ${filterClass}`;
+      });
+    });
+
+    // Credit Card spacing handler
+    const cardInput = document.getElementById('user-card');
+    cardInput.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      let matches = val.match(/\d{4,16}/g);
+      let match = matches && matches[0] || '';
+      let parts = [];
+
+      for (let i = 0, len = match.length; i < len; i += 4) {
+        parts.push(match.substring(i, i + 4));
+      }
+
+      if (parts.length > 0) {
+        e.target.value = parts.join(' ');
+      } else {
+        e.target.value = val;
+      }
+    });
+
+    // Expiry input handler
+    const expiryInput = document.getElementById('user-expiry');
+    expiryInput.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      if (val.length >= 2) {
+        e.target.value = val.substring(0, 2) + '/' + val.substring(2, 4);
+      } else {
+        e.target.value = val;
+      }
+    });
+
+    // Mock Checkout submission animation
+    function handleCheckout(event) {
+      event.preventDefault();
+      
+      const spinner = document.getElementById('btn-spinner');
+      const btnText = document.getElementById('btn-text');
+      const submitBtn = document.getElementById('btn-submit');
+      const successOverlay = document.getElementById('success-overlay');
+
+      spinner.style.display = 'inline-block';
+      btnText.textContent = 'Processing Security...';
+      submitBtn.disabled = true;
+
+      // Simulate network request
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        btnText.textContent = 'Order Confirmed';
+        
+        // Show success screen
+        const email = document.getElementById('user-email').value;
+        document.getElementById('success-message').textContent = `Your WH-1000XM6 order is confirmed. A receipt and shipping updates have been sent to ${email}. Pre-order reference #SNY-6617942.`;
+        successOverlay.classList.add('active');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
